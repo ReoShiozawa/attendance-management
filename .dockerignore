@@ -1,0 +1,15 @@
+# Docker関連
+Dockerfile
+docker-compose.yml
+.dockerignore
+
+# Git
+.git
+.gitignore
+
+# データファイル
+*.dat
+
+# 実行ファイル
+attendance
+*.o

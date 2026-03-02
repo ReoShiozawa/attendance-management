@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ログイン - 勤怠管理システム</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .login-container {
+            max-width: 400px;
+            margin: 50px auto;
+            padding: 30px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .login-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #333;
+        }
+        .form-group input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+        .form-group input:focus {
+            outline: none;
+            border-color: #4CAF50;
+        }
+        .login-btn {
+            width: 100%;
+            padding: 14px;
+            background: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        .login-btn:hover {
+            background: #45a049;
+        }
+        .register-btn {
+            width: 100%;
+            padding: 14px;
+            background: #2196F3;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        .register-btn:hover {
+            background: #0b7dda;
+        }
+        .error-message {
+            background: #ffebee;
+            color: #c62828;
+            padding: 12px;
+            border-radius: 5px;
+            margin-bottom: 15px;
+            display: none;
+        }
+        .error-message.show {
+            display: block;
+        }
+        .demo-info {
+            background: #e3f2fd;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            font-size: 14px;
+        }
+        .demo-info strong {
+            color: #1976d2;
+        }
+        .toggle-form {
+            text-align: center;
+            margin-top: 20px;
+            color: #666;
+        }
+        .toggle-form a {
+            color: #4CAF50;
+            cursor: pointer;
+            text-decoration: none;
+        }
+        .toggle-form a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <div class="login-header">
+            <h1>📋 勤怠管理システム</h1>
+            <p id="formTitle">ログイン</p>
+        </div>
+
+        <div class="demo-info">
+            <strong>デモアカウント</strong><br>
+            ユーザー名: <code>demo</code><br>
+            パスワード: <code>demo123</code>
+        </div>
+
+        <div id="errorMessage" class="error-message"></div>
+
+        <!-- ログインフォーム -->
+        <form id="loginForm">
+            <div class="form-group">
+                <label for="username">ユーザー名</label>
+                <input type="text" id="username" name="username" required>
+            </div>
+            <div class="form-group">
+                <label for="password">パスワード</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <div class="form-group" id="fullNameGroup" style="display: none;">
+                <label for="fullName">氏名（オプション）</label>
+                <input type="text" id="fullName" name="fullName">
+            </div>
+            <div class="form-group" id="emailGroup" style="display: none;">
+                <label for="email">メールアドレス（オプション）</label>
+                <input type="email" id="email" name="email">
+            </div>
+            <button type="submit" class="login-btn" id="submitBtn">ログイン</button>
+        </form>
+
+        <div class="toggle-form">
+            <span id="toggleText">アカウントをお持ちでない方は </span>
+            <a id="toggleLink" onclick="toggleForm()">新規登録</a>
+        </div>
+    </div>
+
+    <script src="login.js"></script>
+</body>
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>勤怠管理システム</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;">
+                <div>
+                    <h1>📋 勤怠管理システム</h1>
+                    <p class="subtitle">Assembly + Web API + Frontend</p>
+                </div>
+                <div style="text-align: right;">
+                    <p id="userInfo" style="margin: 5px 0; color: #666; font-size: 14px;">ユーザー: <span id="username"></span></p>
+                    <button onclick="logout()" class="btn btn-small" style="background: #f44336;">ログアウト</button>
+                </div>
+            </div>
+        </header>
+
+        <main>
+            <!-- 現在時刻表示 -->
+            <div class="current-time">
+                <div class="time-label">現在時刻</div>
+                <div id="currentTime" class="time-display">--:--:--</div>
+                <div id="currentDate" class="date-display">----/--/--</div>
+            </div>
+
+            <!-- 打刻ボタン -->
+            <div class="button-group">
+                <button id="clockInBtn" class="btn btn-primary">
+                    <span class="btn-icon">🟢</span>
+                    出勤
+                </button>
+                <button id="clockOutBtn" class="btn btn-secondary">
+                    <span class="btn-icon">🔴</span>
+                    退勤
+                </button>
+            </div>
+
+            <!-- 統計情報 -->
+            <div class="stats-section">
+                <h2>📊 統計情報</h2>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-value" id="totalRecords">0</div>
+                        <div class="stat-label">総記録数</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value" id="todayRecords">0</div>
+                        <div class="stat-label">今日の記録</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value" id="clockInCount">0</div>
+                        <div class="stat-label">出勤回数</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value" id="clockOutCount">0</div>
+                        <div class="stat-label">退勤回数</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 勤怠履歴 -->
+            <div class="history-section">
+                <div class="history-header">
+                    <h2>📝 勤怠履歴</h2>
+                    <button id="refreshBtn" class="btn btn-small">更新</button>
+                </div>
+                <div id="recordsList" class="records-list">
+                    <!-- JavaScriptで動的に生成 -->
+                </div>
+            </div>
+
+            <!-- メッセージ表示 -->
+            <div id="message" class="message"></div>
+        </main>
+
+        <footer>
+            <p>Powered by ARM64 Assembly + FastAPI + Vanilla JS</p>
+        </footer>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

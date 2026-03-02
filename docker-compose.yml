@@ -1,0 +1,36 @@
+services:
+  # アセンブリ開発環境（CLI版）
+  assembly:
+    build: .
+    container_name: kinntai_assembly
+    volumes:
+      - .:/app
+    stdin_open: true
+    tty: true
+    working_dir: /app
+
+  # REST API サーバー
+  api:
+    build: ./api
+    container_name: kinntai_api
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./api:/app
+      - api_data:/app/data
+    environment:
+      - PYTHONUNBUFFERED=1
+    restart: unless-stopped
+
+  # フロントエンド（Nginx）
+  frontend:
+    build: ./frontend
+    container_name: kinntai_frontend
+    ports:
+      - "3000:80"
+    depends_on:
+      - api
+    restart: unless-stopped
+
+volumes:
+  api_data:

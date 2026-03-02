@@ -1,0 +1,20 @@
+*.o
+*.out
+attendance
+attendance.dat
+.DS_Store
+# APIデータ（個人情報を含む可能性があるため除外）
+api/data/users.json
+api/data/records.json
+api/data/attendance.json
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+venv/
+.venv/
+
+# 環境変数
+.env
+.env.local
